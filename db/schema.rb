@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20200520111615) do
     t.datetime "updated_at",                                         null: false
     t.string   "avatar_file_name",       limit: 255
     t.string   "avatar_content_type",    limit: 255
-    t.integer  "avatar_file_size",       limit: 4
+    t.integer  "avatar_file_size",       limit: 8
     t.datetime "avatar_updated_at"
     t.string   "invitation_token",       limit: 255
     t.datetime "invitation_created_at"

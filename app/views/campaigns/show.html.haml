@@ -23,7 +23,7 @@
                 %strong
                   = @user.name
                   %small
-                    = "(#{(@user.is_elector?(@structure)) ? 'Vote contabilisé' : 'Vote consultatif'})"
+                    = "(#{(@user.is_elector?(@structure)) ? 'Vote comptabilisé' : 'Vote consultatif'})"
               - if @user.has_voted?(@campaign) && @presidences.blank?
                 %p.text-danger Vous avez déjà rempli tous vos bulletins
               - else
@@ -58,7 +58,7 @@
                       = check_box_tag "votings[voter][][resource_id]", s.id, false, class: 'form-check-input'
                       = label_tag "voter[voter][][resource_class]", class: 'form-check-label' do
                         = "Présidence de <b>#{s.name}</b>".html_safe
-                        %small= "(#{(s.is_elector?(@structure)) ? 'Vote contabilisé' : 'Vote consultatif'})"
+                        %small= "(#{(s.is_elector?(@structure)) ? 'Vote comptabilisé' : 'Vote consultatif'})"
 
 
           - unless @campaign.can_vote?

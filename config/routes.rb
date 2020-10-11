@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
     resources :accounts, only: :update
 
-    root :to => redirect('/mon-compte'), as: :authenticated_user
+    root :to => redirect('/campaigns'), as: :authenticated_user
   end
 
   get '/direct_access_user/:token', to: 'users/access#new', as: :direct_access_user
