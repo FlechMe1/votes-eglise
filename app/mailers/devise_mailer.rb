@@ -4,12 +4,12 @@ class DeviseMailer < Devise::Mailer
   default template_path: 'mailer' # to make sure that your mailer uses the devise views
 
   def invitation_instructions(record, token, opts={})
-    opts[:subject] = "[FNADF] Bienvenue sur l'interface de votes électroniques"
+    opts[:subject] = "[LA PEPINIERE] Bienvenue sur l'interface de votes électroniques"
     super
   end
 
   def reset_password_instructions(record, token, opts={})
-    opts[:subject] = "[FNADF] Réinitialiser mon mot de passe"
+    opts[:subject] = "[LA PEPINIERE] Réinitialiser mon mot de passe"
     super
   end
 

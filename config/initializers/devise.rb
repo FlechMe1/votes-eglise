@@ -13,7 +13,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'contact@add-fnadf.fr'
+  config.mailer_sender = 'contact@lapepiniere.church'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
