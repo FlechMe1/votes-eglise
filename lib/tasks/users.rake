@@ -3,7 +3,10 @@ require 'csv'
 namespace :users do
 
   task :create_first_user => :environment do |t, args|
-    u.create(firstname: 'Paul', lastname: 'Gruson', email: 'paul@lapepiniere.church', password: 'ChangeM3!', password_confirmation: 'ChangeM3!')
+    u = User.create(firstname: 'Paul', lastname: 'Gruson', email: 'paul@lapepiniere.church', password: 'ChangeM3!', password_confirmation: 'ChangeM3!')
+
+    u.add_role :admin
+
   end
 
   task :update_or_create_from_file => :environment do |t, args|
