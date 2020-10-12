@@ -4,16 +4,16 @@
 
 %p
   Vous venez d'être invité à participer
-  %strong aux votes électroniques de la FNADF.
+  %strong aux votes électroniques de l'Eglise La Pépinière.
 
 %p
   Par cette interface, vous serez en mesure de
   %strong voter électroniquement
-  pour les prochains congrès.
+  pour les prochaines assemblées générales.
 
 %p
   %span{:style => "display:block;padding:10px 15px;background:#dedede;"}
-    = link_to accept_invitation_url(@resource, :invitation_token => @token), style:"text-decoration:none;color:#000" do
+    = link_to accept_invitation_url(@resource, :invitation_token => @resource.invitation_token), style:"text-decoration:none;color:#000" do
       %strong Accepter l'invitation
 
 %p
@@ -21,8 +21,8 @@
 
 %p
   %span{:style => "display:block;padding:10px 15px;background:#dedede;"}
-    = link_to accept_invitation_url(@resource, :invitation_token => @token), style:"text-decoration:none;color:#000" do
-      = accept_invitation_url(@resource, :invitation_token => @token)
+    = link_to accept_invitation_url(@resource, :invitation_token => @resource.invitation_token), style:"text-decoration:none;color:#000" do
+      = accept_invitation_url(@resource, :invitation_token => @resource.invitation_token)
 
 %p{style: "font-style:italic;font-size:14px;line-height:18px;"}
-  FNADF
+  L'Eglise La Pépinière
