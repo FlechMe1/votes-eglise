@@ -113,7 +113,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def self.currents
-    Campaign.with_states([:coming, :opened]).order(name: :asc)
+    Campaign.with_states([:coming, :opened]).order(start_at: :asc)
   end
 
   def get_voters opts=nil
