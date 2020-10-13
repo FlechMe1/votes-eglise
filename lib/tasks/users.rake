@@ -6,11 +6,12 @@ namespace :users do
     u = User.create(firstname: 'Paul', lastname: 'Gruson', email: 'paul@lapepiniere.church', password: 'ChangeM3!', password_confirmation: 'ChangeM3!')
 
     u.add_role :admin
-
   end
 
   task :update_or_create_from_file => :environment do |t, args|
-    file = './db/seeds/pasteurs-2020.csv'
+    file = './db/seeds/lapepiniere-2020.csv'
+
+    puts "ENVIRONNEMENT : #{Rails.env}"
 
 
     csv_text = File.read(file)
@@ -22,22 +23,16 @@ namespace :users do
     updated_user = 0
 
     csv.each do |row|
-      # Moulding.create!(row.to_hash)
-
-      # puts row['ID']
-
-      # user = User.find_or_create_by(email: row['email'], lastname: row['lastname'])
-
-      user = User.find_by(id: 1000+row['ID'].to_i)
 
 
+      user = User.find_by(email: row['email'])
 
       if user.blank?
-        puts "**** NOUVEAU PASTEUR *****"
+        puts "**** NOUVEL UTILISATEUR *****"
         user = User.new
         new_user = new_user + 1
       else
-        puts "**** MISE A JOURS PASTEUR *****"
+        puts "**** MISE A JOURS UTILISATEUR *****"
         updated_user = updated_user + 1
       end
 
@@ -47,33 +42,28 @@ namespace :users do
       user.phone_1 = row['phone_1']
       user.phone_2 = row['phone_2']
       user.town = row['town']
+      user.address_1 = row['address_1']
+      user.address_2 = row['address_2']
       user.zipcode = row['zipcode']
       user.level = row['level']
 
-      user.save
-
-      existing_users = existing_users - [user]
-
+      puts "*** CHECK IF USER FEEL GOOD"
       puts user.inspect
+
+      user.invite!
+
+      structure = Structure.first
+      user.add_role :member, structure
+
+      # user.save
     end
 
-    puts "**** PASTEURS RESTANTS *****"
-    disabled_user = 0
-    existing_users.each do |user|
-      puts "#{user.lastname} #{user.firstname} - #{user.email} : #{user.level}"
-      user.disabled = true
-      user.save
-      disabled_user = disabled_user + 1
-    end
-
-    puts "**** NOMBRE DE PASTEURS MIS A JOURS *****"
+    puts "**** NOMBRE D'UTILISATEURS MIS A JOURS *****"
     puts updated_user
 
-    puts "**** NOMBRE DE PASTEURS AJOUTES *****"
+    puts "**** NOMBRE D'UTILISATEURS AJOUTES *****"
     puts new_user
 
-    puts "**** NOMBRE DE PASTEURS DESACTIVES *****"
-    puts disabled_user
   end
 
   task :generate_token => :environment do |t, args|
