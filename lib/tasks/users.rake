@@ -24,38 +24,38 @@ namespace :users do
 
     csv.each do |row|
 
+      unless row['email'].blank?
 
-      user = User.find_by(email: row['email'])
+        user = User.find_by(email: row['email'])
 
-      if user.blank?
-        puts "**** NOUVEL UTILISATEUR *****"
-        user = User.new
-        new_user = new_user + 1
-      else
-        puts "**** MISE A JOURS UTILISATEUR *****"
-        updated_user = updated_user + 1
+        if user.blank?
+          puts "**** NOUVEL UTILISATEUR *****"
+          user = User.new
+          new_user = new_user + 1
+
+          user.lastname = row['lastname']
+          user.firstname = row['firstname']
+          user.email = row['email']
+          user.phone_1 = row['phone_1']
+          user.phone_2 = row['phone_2']
+          user.town = row['town']
+          user.address_1 = row['address_1']
+          user.address_2 = row['address_2']
+          user.zipcode = row['zipcode']
+          user.level = row['level']
+
+          puts "*** CHECK IF USER FEEL GOOD"
+          puts user.inspect
+
+          user.invite!
+
+          structure = Structure.first
+          user.add_role :member, structure
+        end
+
+        # user.save
       end
 
-      user.lastname = row['lastname']
-      user.firstname = row['firstname']
-      user.email = row['email']
-      user.phone_1 = row['phone_1']
-      user.phone_2 = row['phone_2']
-      user.town = row['town']
-      user.address_1 = row['address_1']
-      user.address_2 = row['address_2']
-      user.zipcode = row['zipcode']
-      user.level = row['level']
-
-      puts "*** CHECK IF USER FEEL GOOD"
-      puts user.inspect
-
-      user.invite!
-
-      structure = Structure.first
-      user.add_role :member, structure
-
-      # user.save
     end
 
     puts "**** NOMBRE D'UTILISATEURS MIS A JOURS *****"
@@ -63,7 +63,6 @@ namespace :users do
 
     puts "**** NOMBRE D'UTILISATEURS AJOUTES *****"
     puts new_user
-
   end
 
   task :generate_token => :environment do |t, args|
