@@ -2,8 +2,8 @@
 %html
   %head
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1; maximum-scale=1.0"}
-    %title Gestion des Votes FNADF/UNADF
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'En quelques sortes, nous sommes la nouvelle génération des vendeurs de voyage de groupes B2B, les groupistes 2.0 !'}"}
+    %title Gestion des Votes Eglise Paris Metropole
+    %meta{:name => "description", :content => "Votes electroniques de Eglise Paris Metropole"}
     = stylesheet_link_tag 'application', media: 'all'
     = favicon_link_tag "/favicon.ico"
     = csrf_meta_tags
@@ -15,7 +15,7 @@
           .login-logo.display-4.mb-5
             = link_to root_url do
               Eglise
-              %b La Pépinière
+              %b Paris Métropole
 
           .login-form
             = yield

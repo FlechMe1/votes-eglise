@@ -20,10 +20,10 @@
             %i.fa.fa-bars
           %a.navbar-brand{:href => "/"}
             Eglise
-            %b.ml-1 La Pépinière
+            %b.ml-1 Paris Métropole
           %a.navbar-brand.hidden{:href => "/"}
-            L
-            %b P
+            EP
+            %b M
 
         #main-menu.main-menu.collapse.navbar-collapse
           = render "layouts/sidebar"
@@ -51,7 +51,7 @@
 
             .user-area.dropdown.float-right
               %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
-                = image_tag current_user.avatar.url(:thumb), class: "user-avatar rounded-circle"
+                = current_user.name
               .user-menu.dropdown-menu
                 = link_to me_path, class: 'nav-link' do
                   %i.fa.fa-.user>
