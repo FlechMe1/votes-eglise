@@ -34,9 +34,9 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'ransack'
 gem "switch_user"
 gem 'state_machines-activerecord'
+gem "mini_racer"
 
 group :development do
-  gem "mini_racer"
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'html2haml'
