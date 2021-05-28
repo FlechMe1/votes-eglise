@@ -21,7 +21,7 @@ gem 'mysql2', '~> 0.5.3'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem "paperclip"
 gem 'popper_js', '~> 1.12.9'
-gem "rolify"
+gem "rolify", '5.2.0'
 gem "cancan"
 gem "select2-rails"
 gem 'momentjs-rails'
