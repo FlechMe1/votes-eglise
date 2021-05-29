@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.3.6'
-gem 'rails', '~> 4.2.4', git: "https://github.com/rails/rails.git", branch: '4-2-stable'
+gem 'rails', '4.2.11.3'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -34,6 +34,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'ransack'
 gem "switch_user"
 gem 'state_machines-activerecord'
+gem 'execjs', '~> 2.7'
 
 group :development do
   gem 'better_errors'
