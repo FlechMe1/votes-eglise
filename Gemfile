@@ -34,6 +34,7 @@ gem 'ransack'
 gem "switch_user"
 gem 'state_machines-activerecord'
 gem 'therubyracer', group: :assets
+gem 'execjs'
 
 group :development do
   gem 'better_errors'
