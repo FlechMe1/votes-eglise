@@ -33,7 +33,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'ransack'
 gem "switch_user"
 gem 'state_machines-activerecord'
-gem 'mini_racer'
+gem 'therubyracer', group: :assets
+gem 'execjs'
 
 group :development do
   gem 'better_errors'
