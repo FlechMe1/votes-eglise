@@ -35,6 +35,7 @@ gem 'state_machines-activerecord'
 gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 gem 'sprockets', '3.7.2'
 gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
 
 group :development do
   gem 'better_errors'
