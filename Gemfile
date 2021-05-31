@@ -36,7 +36,6 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 gem 'sprockets', '3.7.2'
 
 group :development do
-  gem "mini_racer"
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'html2haml'
