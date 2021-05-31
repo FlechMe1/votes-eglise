@@ -34,6 +34,7 @@ gem "switch_user"
 gem 'state_machines-activerecord'
 gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 gem 'sprockets', '3.7.2'
+gem 'therubyrhino', '~> 2.0', '>= 2.0.4'
 
 group :development do
   gem 'better_errors'
