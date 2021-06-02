@@ -1,27 +1,31 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.6.3'
-gem 'rails', '~> 4.2.4', git: "https://github.com/rails/rails.git", branch: '4-2-stable'
-gem 'sass-rails'
+ruby '2.7.1'
+gem 'rails', '4.2.11.3'
+
+gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails', '4.4.0'
+gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'spring',        group: :development
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'bootstrap', '~> 4.6'
 gem 'bourbon'
 gem 'devise',           '~> 4.2'
 gem 'devise_invitable', '~> 1.7.0'
-gem 'haml-rails', '1.0.0'
+gem 'haml-rails'
 gem 'high_voltage'
 gem 'mysql2', '~> 0.5.3'
-gem 'font-awesome-sass', '~> 4.7.0'
-gem 'popper_js', '~> 1.12.9'
-gem "rolify", '5.2.0'
-gem "cancan", '1.6.10'
-gem "select2-rails", '4.0.13'
+gem 'font-awesome-sass', '~> 5.15.1'
+gem "paperclip"
+gem 'popper_js', '>= 1.14.3', '< 2'
+gem "rolify"
+gem "cancan"
+gem "select2-rails"
 gem 'momentjs-rails'
 gem 'bootstrap4-datetime-picker-rails'
 gem "cocoon"
@@ -29,15 +33,17 @@ gem 'bootstrap-toggle-rails'
 gem 'wicked'
 gem 'carrierwave', '~> 1.0'
 gem 'will_paginate', '~> 3.1.0'
-gem 'ransack', '1.8.10'
+gem 'ransack'
 gem "switch_user"
 gem 'state_machines-activerecord'
-gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
-gem 'sprockets', '3.7.2'
-gem 'execjs'
-gem 'therubyracer', :platforms => :ruby
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'toastr-rails'
+gem 'rails_email_preview'
+gem 'bigdecimal', '1.3.5'
 
 group :development do
+  gem "mini_racer"
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'html2haml'
@@ -48,5 +54,11 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'spring-commands-rspec'
   gem 'quiet_assets'
 end
+
+group :production do
+  gem 'unicorn'
+end
+
