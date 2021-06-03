@@ -9,48 +9,63 @@ namespace :users do
   end
 
   task :update_or_create_from_file => :environment do |t, args|
-    file = './db/seeds/lapepiniere-2020.csv'
+    file = './db/seeds/epm-2021.csv'
 
     puts "ENVIRONNEMENT : #{Rails.env}"
 
 
     csv_text = File.read(file)
 
-    csv = CSV.parse(csv_text, headers: true, :col_sep => ",", :row_sep => :auto)
+    csv = CSV.parse(csv_text, headers: true, :col_sep => ";", :row_sep => :auto)
 
-    existing_users = User.all.to_a
     new_user = 0
     updated_user = 0
 
+    structure = Structure.first
+
+    puts structure.inspect
+
+    puts csv.inspect
+
+
     csv.each do |row|
 
-      unless row['email'].blank?
+      puts row.inspect
 
-        user = User.find_by(email: row['email'])
+      unless row['EMAIL'].blank?
 
-        if user.blank?
-          puts "**** NOUVEL UTILISATEUR *****"
+        fullname = row['FULLNAME'].split(' ', 2)
+
+        lastname = fullname.first
+        firstname = fullname.last
+
+
+        user = User.find_by(email: row['EMAIL'])
+
+        if user
+          puts "UPDATE USER #{user.fullname}"
+          user.lastname = lastname
+          user.firstname = firstname
+
+          user.save
+
+          user.add_role :member, structure
+
+          updated_user = updated_user + 1
+
+        else
+          puts "CREATE USER #{row['FULLNAME']}"
           user = User.new
-          new_user = new_user + 1
-
-          user.lastname = row['lastname']
-          user.firstname = row['firstname']
-          user.email = row['email']
-          user.phone_1 = row['phone_1']
-          user.phone_2 = row['phone_2']
-          user.town = row['town']
-          user.address_1 = row['address_1']
-          user.address_2 = row['address_2']
-          user.zipcode = row['zipcode']
-          user.level = row['level']
-
-          puts "*** CHECK IF USER FEEL GOOD"
-          puts user.inspect
+          user.lastname = lastname
+          user.firstname = firstname
+          user.email = row['EMAIL']
 
           user.invite!
 
-          structure = Structure.first
           user.add_role :member, structure
+
+          new_user = new_user + 1
+
         end
 
         # user.save
@@ -65,17 +80,4 @@ namespace :users do
     puts new_user
   end
 
-  task :generate_token => :environment do |t, args|
-
-    puts "Generate Roken for each User"
-
-    User.all.each do |u|
-      if u.access_token.blank?
-        puts "U : #{u.id} - Set Token"
-        u.set_access_token
-        u.save
-      end
-    end
-
-  end
 end
