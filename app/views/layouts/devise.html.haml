@@ -2,8 +2,8 @@
 %html
   %head
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1; maximum-scale=1.0"}
-    %title Gestion des Votes Eglise Paris Metropole
-    %meta{:name => "description", :content => "Votes electroniques de Eglise Paris Metropole"}
+    %title Gestion des Votes Eglise La Pépinière
+    %meta{:name => "description", :content => "Votes electroniques de Eglise La pépinière"}
     = stylesheet_link_tag 'application', media: 'all'
     = favicon_link_tag "/favicon.ico"
     = csrf_meta_tags
@@ -15,7 +15,7 @@
           .login-logo.display-4.mb-5
             = link_to root_url do
               Eglise
-              %b Paris Métropole
+              %b La Pépinière
 
           .login-form
             = yield
