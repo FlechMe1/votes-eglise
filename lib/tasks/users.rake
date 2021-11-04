@@ -36,8 +36,8 @@ namespace :users do
 
         fullname = row['FULLNAME'].split(' ', 2)
 
-        lastname = fullname.first
-        firstname = fullname.last
+        lastname = row['LASTNAME']
+        firstname = row['FIRSTNAME']
 
 
         user = User.find_by(email: row['EMAIL'])
