@@ -9,14 +9,14 @@ namespace :users do
   end
 
   task :update_or_create_from_file => :environment do |t, args|
-    file = './db/seeds/epm-2021.csv'
+    file = './db/seeds/lapepiniere-2021.csv'
 
     puts "ENVIRONNEMENT : #{Rails.env}"
 
 
     csv_text = File.read(file)
 
-    csv = CSV.parse(csv_text, headers: true, :col_sep => ";", :row_sep => :auto)
+    csv = CSV.parse(csv_text, headers: true, :col_sep => ",", :row_sep => :auto)
 
     new_user = 0
     updated_user = 0
