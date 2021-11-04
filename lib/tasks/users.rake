@@ -34,8 +34,6 @@ namespace :users do
 
       unless row['EMAIL'].blank?
 
-        fullname = row['FULLNAME'].split(' ', 2)
-
         lastname = row['LASTNAME']
         firstname = row['FIRSTNAME']
 
