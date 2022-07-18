@@ -18,20 +18,31 @@
 
       .form-group
         = f.label :start_at
-        = f.text_field :start_at, class: 'form-control datetimepicker', value: "#{ldate campaign.start_at}", data: {target: '#campaign_start_at', toggle: "datetimepicker"}
+        = f.datetime_field :start_at, class: 'form-control', type: 'datetime-local', value: ldate(campaign.start_at, format: :default)
 
       .form-group
         = f.label :end_at
-        = f.text_field :end_at, class: 'form-control datetimepicker', value: "#{ldate campaign.end_at}", data: {target: '#campaign_end_at', toggle: "datetimepicker"}
+        = f.datetime_field :end_at, class: 'form-control', type: 'datetime-local', value: ldate(campaign.end_at, format: :default)
+
+    .col-md-6
+      %h3 Pouvoirs
+      %table.table
+        %thead
+          %tr
+            %th Qui
+            %th donne à qui
+            %th
+
+        %tbody#powers
+          = f.fields_for :powers do |ff|
+            = render 'power_fields', :f => ff
+
 
       .form-group
-        .form-check
-          = f.check_box :is_public, class: "form-check-input"
-          = f.label :is_public, "Campagne public ?", class: "form-check-label"
-          %p.text-muted
-            Détermine si la campagne est accessible également aux "non-membres".
-            %br
-            %em Exemple : Consultation de l'ensemble des pasteurs pour une motion.
+        = link_to_add_association f, :powers, class: "btn btn-sm btn-primary", data: {"association-insertion-node" => "tbody#powers", "association-insertion-method" => "append"} do
+          = icon 'fa', "plus"
+          Ajouter une procuration
+
 
     .col-md-12
       %h3 Motions
@@ -46,12 +57,10 @@
           = f.fields_for :motions do |ff|
             = render 'motion_fields', :f => ff
 
-          %tr
-            %td{colspan: 3}
-              .form-group
-                = link_to_add_association f, :motions, class: "btn btn-sm btn-primary", data: {"association-insertion-node" => "tbody#motions", "association-insertion-method" => "prepend"} do
-                  = icon 'fa', "plus"
-                  Ajouter une motion
+      .form-group
+        = link_to_add_association f, :motions, class: "btn btn-sm btn-primary", data: {"association-insertion-node" => "tbody#motions", "association-insertion-method" => "append"} do
+          = icon 'fa', "plus"
+          Ajouter une motion
 
 
   .float-right

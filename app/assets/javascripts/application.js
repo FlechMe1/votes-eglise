@@ -183,5 +183,31 @@ jQuery(document).ready(function($) {
     });
   });
 
+  $('#powers').on('cocoon:after-insert', function() {
+
+    $('.from_id').each(function(){
+      $(this).on('change', function(){
+
+        var option = $(this).find(':selected');
+        console.log(option);
+        var data_tye = option.data('type');
+
+        console.log(data_tye);
+        $(this).next('.from_type').val(data_tye);
+      });
+    });
+
+    $('.to_id').each(function(){
+      $(this).on('change', function(){
+
+        var option = $(this).find(':selected');
+        console.log(option);
+        var data_tye = option.data('type');
+
+        console.log(data_tye);
+        $(this).next('.to_type').val(data_tye);
+      });
+    });
+  });
 
 });

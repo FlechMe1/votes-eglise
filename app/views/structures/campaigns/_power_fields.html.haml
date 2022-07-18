@@ -1,0 +1,13 @@
+%tr
+  %td
+    = f.select :from_id, options_for_select(@members.map{ |m| [m.name, m.id, {'data-type'=>m.class.to_s, selected: m.id == f.object.from_id }] }), {prompt: '-- Qui ? --'},  class: 'form-control from_id'
+    = f.hidden_field :from_type, class: 'from_type'
+
+  %td
+    = f.select :to_id, options_for_select(@members.map{ |m| [m.name, m.id, {'data-type'=>m.class.to_s, selected: m.id == f.object.to_id }] }), {prompt: '-- Qui ? --'},  class: 'form-control to_id'
+    = f.hidden_field :to_type, class: 'to_type'
+
+  %td
+    = link_to_remove_association f, class: 'btn btn-danger btn-sm remove_fields' do
+      = icon 'fa', 'minus'
+      Supprimer le pouvoir

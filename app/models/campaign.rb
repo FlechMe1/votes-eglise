@@ -3,6 +3,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :structure
   belongs_to :meeting
   has_many :motions, -> { order 'motions.order asc' }, dependent: :destroy
+  has_many :powers, dependent: :destroy
 
   state_machine :state, initial: :coming do
 
@@ -47,6 +48,7 @@ class Campaign < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :motions, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :powers, reject_if: :all_blank, allow_destroy: true
 
   delegate :name, to: :structure, prefix: true
 

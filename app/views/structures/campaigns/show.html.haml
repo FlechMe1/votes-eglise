@@ -69,6 +69,17 @@
                         %td= motion.name
                         %td= t 'activerecord.attributes.motion.kinds.'+motion.kind
 
+                .col-md-6
+                  %table.table
+                    %thead
+                      %tr
+                        %th Qui
+                        %th A qui
+                    - @campaign.powers.each do |power|
+                      %tr
+                        %td= power.from.name
+                        %td= power.to.name
+
             .bg-light.p-3
               %h4.h5.m-3 Résultats
 

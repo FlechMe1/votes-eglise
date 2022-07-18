@@ -11,6 +11,7 @@ class Structures::CampaignsController < ApplicationController
 
   def new
     @campaign = @structure.campaigns.build
+    @members = @structure.members
   end
 
   def create
@@ -18,12 +19,14 @@ class Structures::CampaignsController < ApplicationController
     if @campaign.save
       redirect_to [@structure.becomes(Structure), @campaign], notice: "Campagne créée"
     else
+      @members = @structure.members
       render :new
     end
   end
 
   def edit
     @campaign = @structure.campaigns.find params[:id]
+    @members = @structure.members
   end
 
   def update
@@ -31,6 +34,7 @@ class Structures::CampaignsController < ApplicationController
     if @campaign.update(campaign_params)
       redirect_to [@structure.becomes(Structure), @campaign], flash:{success: 'Campagne mise à jours.'}
      else
+      @members = @structure.members
       render :edit
     end
   end
@@ -48,7 +52,7 @@ class Structures::CampaignsController < ApplicationController
     end
 
     def campaign_params
-      params[:campaign].permit(:name, :description, :code, :start_at, :end_at, :is_public, motions_attributes: [:id, :name, :kind, :order, :_destroy])
+      params[:campaign].permit(:name, :description, :code, :start_at, :end_at, :is_public, motions_attributes: [:id, :name, :kind, :order, :_destroy], powers_attributes: [:id, :from_id, :from_type, :to_id, :to_type, :_destroy])
     end
 
 end

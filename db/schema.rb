@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200520111615) do
+ActiveRecord::Schema.define(version: 20220715092820) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer  "structure_id", limit: 4
@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(version: 20200520111615) do
   end
 
   add_index "motions", ["campaign_id"], name: "index_motions_on_campaign_id", using: :btree
+
+  create_table "powers", force: :cascade do |t|
+    t.integer  "campaign_id", limit: 4
+    t.integer  "from_id",     limit: 4
+    t.string   "from_type",   limit: 255
+    t.integer  "to_id",       limit: 4
+    t.string   "to_type",     limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "powers", ["campaign_id"], name: "index_powers_on_campaign_id", using: :btree
+  add_index "powers", ["from_type", "from_id"], name: "index_powers_on_from_type_and_from_id", using: :btree
+  add_index "powers", ["to_type", "to_id"], name: "index_powers_on_to_type_and_to_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",          limit: 255
