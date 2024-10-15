@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: votes_db
+    image: mysql:5.7
+    ports:
+      - '3307:3306'
+    volumes:
+      - votes_db:/var/lib/mysql
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
+
+  web:
+    container_name: votes_app
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    command: bundle exec unicorn -c /app/config/unicorn.rb -E production
+    volumes:
+      - /var/tmp:/var/tmp
+      - .:/app
+    ports:
+      - "3000:3000"
+    extends:
+      file: ./docker/mysql/password.yml
+      service: password
+    depends_on:
+      - db
+
+volumes:
+  votes_db:

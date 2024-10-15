@@ -41,6 +41,7 @@ gem 'wicked_pdf'
 gem 'toastr-rails'
 gem 'rails_email_preview'
 gem 'bigdecimal', '1.3.5'
+gem 'unicorn'
 
 group :development do
   gem "mini_racer"
@@ -56,9 +57,5 @@ group :development do
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
   gem 'quiet_assets'
-end
-
-group :production do
-  gem 'unicorn'
 end
 

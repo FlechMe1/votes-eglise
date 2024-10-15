@@ -85,3 +85,5 @@ Gemfile.lock
 
 # tilde files are usually backup files from a text editor
 *~
+
+docker/mysql/password.yml
