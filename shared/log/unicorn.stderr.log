@@ -173,3 +173,8 @@ I, [2024-10-15T03:36:11.369880 #9]  INFO -- : worker=2 ready
 I, [2024-10-15T03:36:11.371826 #1]  INFO -- : master process ready
 I, [2024-10-15T03:36:11.372498 #10]  INFO -- : worker=3 spawned pid=10
 I, [2024-10-15T03:36:11.372636 #10]  INFO -- : worker=3 ready
+I, [2024-10-15T04:49:07.034178 #1]  INFO -- : reaped #<Process::Status: pid 7 exit 0> worker=0
+I, [2024-10-15T04:49:07.043185 #1]  INFO -- : reaped #<Process::Status: pid 8 exit 0> worker=1
+I, [2024-10-15T04:49:07.043470 #1]  INFO -- : reaped #<Process::Status: pid 9 exit 0> worker=2
+I, [2024-10-15T04:49:07.043595 #1]  INFO -- : reaped #<Process::Status: pid 10 exit 0> worker=3
+I, [2024-10-15T04:49:07.043801 #1]  INFO -- : master complete

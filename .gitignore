@@ -87,3 +87,4 @@ Gemfile.lock
 *~
 
 docker/mysql/password.yml
+/shared/*
